@@ -8,13 +8,14 @@ function AddTODO({AddItem}){
             <TextInput
             testID='input'
             style={styles.Input} placeholder='ADD TODO ...'
-            placeholderTextColor='#0005'
+            placeholderTextColor='#0005' value={todoText}
+            autoCapitalize='none' autoCorrect={false}
             onChangeText={(todoText)=>setTodoText(todoText)}
             />
             <TouchableOpacity
             testID='button'
             style={styles.AddButton}
-            onPress={()=>AddItem(todoText)}>
+            onPress={()=>{AddItem(todoText); setTodoText('')}}>
                 <Text style={styles.ButtonText}>Add TODO</Text>
             </TouchableOpacity>
         </View>
