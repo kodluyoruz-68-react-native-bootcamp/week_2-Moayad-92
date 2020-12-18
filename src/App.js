@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, View,KeyboardAvoidingView, Platform } from 'react-native';
 import {ListItem} from './components'
 import {AddTODO} from './components'
@@ -20,16 +20,21 @@ function App() {
   }
 
   const removeItem=(key)=>{
-    setList(list.filter(listItem=>listItem.key != key))
+    setList(list.filter(item=>item.key != key))
     setItemsNum(itemsNum-1)
   }
 
   const checkUnCheckItem=(key)=>{
-    setList(
-        list.map(item=>
+    setList(list.map(item=>
             item.key===key ? {...item, isDone:!item.isDone} : item)             
     )
   }
+
+//  Use useEffect to track the list state then change the number of items
+//  to show only the number of active items.
+  useEffect(()=>{
+    setItemsNum(list.filter(item=>!item.isDone).length)
+    },[list])
 
   const renderItem=({item})=> <ListItem item={item} 
                                         NormalPress={checkUnCheckItem}

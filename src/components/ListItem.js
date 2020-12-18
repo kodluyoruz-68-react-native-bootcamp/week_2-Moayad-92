@@ -6,14 +6,14 @@ function ListItem({item ,NormalPress, LongPress}){
         <TouchableOpacity
         onPress={()=>NormalPress(item.key)}
         onLongPress={()=>LongPress(item.key)}>
-            {/* <Text style={styles.ItemText}>{item.text}</Text> */}
         {!item.isDone ? 
             <View style={styles.ItemContainer}>
                 <Text style={styles.ItemText}>{item.text}</Text>
             </View>
         : 
             <View style={[styles.ItemContainer,{opacity:0.4}]}>
-                <Text style={styles.DoneItemText}>{item.text}</Text>
+                <Text style={[styles.ItemText,{textDecorationLine:'line-through'}]}>
+                    {item.text}</Text>
             </View>
         }
         </TouchableOpacity>
@@ -32,13 +32,6 @@ const styles=StyleSheet.create({
         color:'white',
         fontSize:16,
         fontWeight:'bold',
-    },
-
-    DoneItemText:{
-        color:'white',
-        fontSize:16,
-        fontWeight:'bold',
-        textDecorationLine:'line-through',
     },
 })
 
