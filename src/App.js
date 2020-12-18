@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View,KeyboardAvoidingView, Platform } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text, View,
+        KeyboardAvoidingView, Platform } from 'react-native';
 import {ListItem} from './components'
 import {AddTODO} from './components'
 /**
